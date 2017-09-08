@@ -3,6 +3,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
+using System.Data.Entity;
+using System;
 
 namespace Hoteles_Servidor.Models
 {
@@ -20,6 +22,9 @@ namespace Hoteles_Servidor.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        [ThreadStatic]
+        public static ApplicationDbContext applicationDbContext;
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
@@ -29,5 +34,9 @@ namespace Hoteles_Servidor.Models
         {
             return new ApplicationDbContext();
         }
+
+        public DbSet<Hoteles> Hoteles { get; set; }
+        public DbSet<Reservas> Reservas { get; set; }
+        
     }
 }
