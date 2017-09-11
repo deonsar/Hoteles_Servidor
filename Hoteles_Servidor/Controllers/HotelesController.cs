@@ -11,9 +11,11 @@ using System.Web.Http.Description;
 using Hoteles_Servidor.Models;
 using Hoteles_Servidor.Services;
 using Hoteles_Servidor.Exceptions;
+using System.Web.Http.Cors;
 
 namespace Hoteles_Servidor.Controllers
 {
+    [EnableCors(origins: "http://localhost:8080", headers: "*", methods: "*")]
     public class HotelesController : ApiController
     {
         private IHotelesService hotelesService;
