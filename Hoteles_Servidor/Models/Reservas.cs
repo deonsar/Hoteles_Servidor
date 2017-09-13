@@ -18,7 +18,5 @@ namespace Hoteles_Servidor.Models
         public int Habitaciones { get; set; }
         public int Adultos { get; set; }
         public int Ninos { get; set; }
-        public double PrecioTotal { get; set; }
-
     }
 }
